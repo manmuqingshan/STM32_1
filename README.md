@@ -1,10 +1,10 @@
 # STM32 HAL Example Projects – Controllerstech
 
 Welcome to the **STM32-HAL repository**!  
-This repository contains hands-on **STM32 and ESP32/ESP8266 example projects**, covering HAL drivers, peripherals, FreeRTOS, Ethernet, IoT, Modbus TCP, and more.  
+This repository contains hands-on **STM32 example projects**, covering HAL drivers, peripherals, FreeRTOS, Ethernet, IoT, Modbus TCP, and more.  
 All projects are designed for beginners and professionals to learn embedded development efficiently.
 
-Most STM32 examples are tested on **F1, F4, H7 series** boards. ESP32/ESP8266 examples use **ESP-IDF** or Arduino framework where applicable.
+Most STM32 examples are tested on **F1, F4, H7 series** boards.
 
 ---
 
@@ -64,8 +64,7 @@ Most STM32 examples are tested on **F1, F4, H7 series** boards. ESP32/ESP8266 ex
 
 ## 🛠 Development Environment
 - **STM32:** STM32CubeIDE, HAL Drivers (CubeMX generated)  
-- **ESP:** ESP-IDF or Arduino framework  
-- **Boards Tested:** STM32 F1, F4, H7; ESP32 DevKit, ESP8266 modules  
+- **Boards Tested:** STM32 F1, F4, H7 
 - **Project Structure:** Each folder contains a complete project with README and optional diagrams  
 
 ---
@@ -87,7 +86,7 @@ STM32-HAL/
 └── README.md              # Main repository overview
 ```
 Each folder contains:
-- Complete project files (CubeIDE / ESP-IDF / Arduino)  
+- Complete project files 
 - README for that example  
 - Images, diagrams, or wiring references  
 
