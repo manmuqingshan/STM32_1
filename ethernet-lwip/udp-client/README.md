@@ -44,7 +44,7 @@ The CubeMX and LWIP configuration is identical to Part 1 of this series. Refer t
 | Device | IP Address | Port |
 |-------|--------|-----------|
 | STM32 | `192.168.0.123` | `8`(local) |
-| PC / Server | `192.168.0.102` | `7`(destinatoin) |
+| PC / Server | `192.168.0.100` | `7`(destinatoin) |
 
 ---
 
@@ -70,11 +70,11 @@ void udpClient_connect(void)
     upcb = udp_new();
 
     ip_addr_t myIPaddr;
-    IP_ADDR4(&myIPaddr, 192, 168, 0, 111);
+    IP_ADDR4(&myIPaddr, 192, 168, 0, 123);
     udp_bind(upcb, &myIPaddr, 8);
 
     ip_addr_t DestIPaddr;
-    IP_ADDR4(&DestIPaddr, 192, 168, 0, 102);
+    IP_ADDR4(&DestIPaddr, 192, 168, 0, 100);
     err_t err = udp_connect(upcb, &DestIPaddr, 7);
 
     if (err == ERR_OK)
@@ -139,8 +139,7 @@ int main(void)
 
     while (1)
     {
-        ethernetif_input(&gnetif);
-        sys_check_timeouts();
+        MX_LWIP_Process();
     }
 }
 ```
