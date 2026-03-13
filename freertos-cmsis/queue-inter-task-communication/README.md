@@ -8,7 +8,7 @@ This project demonstrates how to use FreeRTOS message queues on STM32 for safe i
 
 **[Watch the full video tutorial on YouTube →](https://youtu.be/wMp5GQLobio)**
 
-**[Read the full written guide →](https://controllerstech.com)**
+**[Read the full written guide →](https://controllerstech.com/stm32-freertos-queue-inter-task-communication/)**
 
 ---
 
