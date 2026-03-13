@@ -8,6 +8,14 @@ This is **Part 2** of the STM32 FreeRTOS series on [Controllerstech](https://con
 
 ---
 
+## 📺 Tutorial
+
+**[Watch the full video tutorial on YouTube →](https://youtu.be/tzWdUVcMUgU)**
+
+**[Read the full written guide →](https://controllerstech.com/stm32-freertos-multiple-tasks-priorities-preemption/)**
+
+---
+
 ## Hardware
 
 - **Board:** STM32 Nucleo-L496ZG
