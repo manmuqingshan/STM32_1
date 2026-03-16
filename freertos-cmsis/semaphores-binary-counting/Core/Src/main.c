@@ -423,7 +423,6 @@ void printResourceTable(void)
 // void StartLPT(void *argument)
 // {
 //   /* USER CODE BEGIN 5 */
-// 	osSemaphoreRelease(myBinarySem01Handle);
 // 	uint32_t wait;
 //   /* Infinite loop */
 //   for(;;)
