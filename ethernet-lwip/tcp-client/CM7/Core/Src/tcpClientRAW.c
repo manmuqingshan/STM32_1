@@ -107,7 +107,7 @@ static void tcp_client_handle (struct tcp_pcb *tpcb, struct tcp_client_struct *e
 
 int counter = 0;
 uint8_t data[100];
-static char rx_buffer[256];
+static char rx_buffer[257];
 
 extern TIM_HandleTypeDef htim1;
 
@@ -436,5 +436,8 @@ static void tcp_client_handle(struct tcp_pcb *tpcb, struct tcp_client_struct *es
     pcbTx = tpcb;
 
     /* Increment counter each time server sends data */
-    counter++;
+    if (p != NULL)
+    {
+        counter++;
+    }
 }
