@@ -81,12 +81,15 @@ void tcp_client_init(void)
 ```c
 static err_t tcp_client_connected(void *arg, struct tcp_pcb *newpcb, err_t err)
 {
+    err_t ret_err;
     struct tcp_client_struct *es;
 
     LWIP_UNUSED_ARG(arg);
     LWIP_UNUSED_ARG(err);
 
+    /* Allocate structure to maintain connection info */
     es = (struct tcp_client_struct *)mem_malloc(sizeof(struct tcp_client_struct));
+
     if (es != NULL)
     {
         es->state = ES_CONNECTED;
@@ -94,34 +97,55 @@ static err_t tcp_client_connected(void *arg, struct tcp_pcb *newpcb, err_t err)
         es->retries = 0;
         es->p = NULL;
 
+        /* Pass es structure to all subsequent callbacks */
         tcp_arg(newpcb, es);
+
+        /* Register receive callback */
         tcp_recv(newpcb, tcp_client_recv);
+
+        /* Register poll callback */
         tcp_poll(newpcb, tcp_client_poll, 0);
+
+        /* Register sent callback */
         tcp_sent(newpcb, tcp_client_sent);
 
-        tcp_client_handle(newpcb, es);
+        /* Send the first message to the server */
+        tcp_client_handle(newpcb, es, NULL);
 
-        return ERR_OK;
+        ret_err = ERR_OK;
     }
     else
     {
+        /* Close connection on memory failure */
         tcp_client_connection_close(newpcb, es);
-        return ERR_MEM;
+        ret_err = ERR_MEM;
     }
+
+    return ret_err;
 }
 ```
 
 ### Client Handle — Process Incoming Data
 ```c
-static void tcp_client_handle(struct tcp_pcb *tpcb, struct tcp_client_struct *es)
+static void tcp_client_handle(struct tcp_pcb *tpcb, struct tcp_client_struct *es, struct pbuf *p)
 {
+    /* Get the remote IP and port */
     ip4_addr_t inIP = tpcb->remote_ip;
     uint16_t inPort = tpcb->remote_port;
     char *remIP = ipaddr_ntoa(&inIP);
 
+    /* store the received data for later use */
+    if (p != NULL)
+    {
+        memcpy(rx_buffer, p->payload, p->len);
+        rx_buffer[p->len] = '\0';
+    }
+
+    /* Store globally for use in the timer callback */
     esTx = es;
     pcbTx = tpcb;
 
+    /* Increment counter each time server sends data */
     counter++;
 }
 ```
@@ -131,14 +155,28 @@ static void tcp_client_handle(struct tcp_pcb *tpcb, struct tcp_client_struct *es
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     char buf[100];
+
+    /* Format the message with the current counter value */
     int len = sprintf(buf, "Sending TCPclient Message %d\n", counter);
 
+    if (esTx == NULL || pcbTx == NULL)
+        return;
+
+    /* Only send if the server has responded at least once */
     if (counter != 0)
     {
+    	if (esTx->p != NULL) return;
+
+        /* Allocate pbuf */
         esTx->p = pbuf_alloc(PBUF_TRANSPORT, len, PBUF_POOL);
+
+        if (esTx->p == NULL) return;
+
+        /* Copy data into pbuf */
         pbuf_take(esTx->p, (char *)buf, len);
+
+        /* Send to server */
         tcp_client_send(pcbTx, esTx);
-        pbuf_free(esTx->p);
     }
 }
 ```
@@ -155,7 +193,7 @@ int main(void)
     MX_LWIP_Init();
 
     tcp_client_init();
-    HAL_TIM_Base_Start_IT(&htim6);
+    HAL_TIM_Base_Start_IT(&htim1);
 
     while (1)
     {
@@ -170,7 +208,7 @@ int main(void)
 
 The image below shows Hercules acting as the TCP Server, receiving periodic messages from the STM32 client. The counter value updates every time Hercules sends data back to the STM32.
 
-![TCP Client Result](images/tcp_client_result.webp)
+![TCP Client Result](images/tcp_client_result.avif)
 
 ---
 
