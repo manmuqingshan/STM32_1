@@ -146,7 +146,10 @@ static void tcp_client_handle(struct tcp_pcb *tpcb, struct tcp_client_struct *es
     pcbTx = tpcb;
 
     /* Increment counter each time server sends data */
-    counter++;
+    if (p != NULL)
+    {
+        counter++;
+    }
 }
 ```
 
