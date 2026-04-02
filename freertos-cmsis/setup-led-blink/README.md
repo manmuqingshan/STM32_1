@@ -60,6 +60,18 @@ The image below shows the LED blinking:
 
 ---
 
+## 🔗 Related Projects
+
+* [FreeRTOS Stack Management and Overflow Detection](https://github.com/controllerstech/STM32-HAL/tree/master/freertos-cmsis/Stack-Management)
+* [FreeRTOS Software Timers (Periodic & One-Shot)](https://github.com/controllerstech/STM32-FreeRTOS-Software-Timers)
+* [FreeRTOS Event Flags](https://github.com/controllerstech/STM32-FreeRTOS-Event-Flags)
+* [FreeRTOS Mutex — Priority Inheritance and Recursive Mutex](https://github.com/controllerstech/STM32-FreeRTOS-Mutex)
+* [FreeRTOS Semaphores — Binary and Counting](https://github.com/controllerstech/STM32-FreeRTOS-Semaphores)
+* [FreeRTOS Queue — Inter-Task Communication](https://github.com/controllerstech/STM32-FreeRTOS-Queue)
+* [FreeRTOS Multiple Tasks and Priorities](https://github.com/controllerstech/STM32-FreeRTOS-Multiple-Tasks)
+
+---
+
 ## License
 
 This example is provided for educational purposes under Controllerstech Guidelines.
