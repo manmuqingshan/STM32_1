@@ -10,8 +10,8 @@ This is **Part 1** of the STM32 Modbus TCP series.
 
 Step-by-step explanation, CubeMX screenshots, and video walkthrough available at:
 
-👉 https://controllerstech.com/stm32-modbus-tcp-server-read-discrete-inputs/
-👉 https://youtu.be/4-yqfzoIIlQ
+- https://controllerstech.com/stm32-modbus-tcp-server-read-discrete-inputs/
+- https://youtu.be/4-yqfzoIIlQ
 
 ---
 
