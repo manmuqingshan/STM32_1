@@ -106,7 +106,7 @@ input_t inputs[10] = {
 
 ```c
 int READ_INPUTS(uint16_t i) {
-    return HAL_GPIO_ReadPin(inputs[num].port, inputs[num].pin);
+    return HAL_GPIO_ReadPin(inputs[i].port, inputs[i].pin);
 }
 ```
 
@@ -149,7 +149,7 @@ bool my_get_inputs(struct inputs *data, size_t i) {
 
 ```c
 mongoose_set_modbus_handler(my_modbus_handler);
-mongoose_set_http_handler("inputs", my_get_inputs, NULL);
+mongoose_set_http_handlers("inputs", my_get_inputs, NULL);
 mongoose_add_ws_reporter(200, "inputs");
 ```
 
