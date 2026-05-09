@@ -4,7 +4,7 @@ Part 4 of the STM32 Modbus TCP Server series. This project implements Modbus TCP
  
 ## 📺 Video Tutorial
  
-[![STM32 Modbus TCP Server – Input Registers & PWM](https://img.youtube.com/vi/OSI7_vO6ll0/maxresdefault.jpg)](https://www.youtube.com/watch?v=OSI7_vO6ll0)
+[STM32 Modbus TCP Server – Input Registers & PWM](https://www.youtube.com/watch?v=OSI7_vO6ll0)
  
 ## 📖 Full Article
  
