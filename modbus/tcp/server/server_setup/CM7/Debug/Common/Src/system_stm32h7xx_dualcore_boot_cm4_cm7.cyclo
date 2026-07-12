@@ -1,0 +1,3 @@
+/Users/arunrawat/STM32CubeIDE/workspace_2/STM32_Modbus_TCP_Server/Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c:180:6:SystemInit	5
+/Users/arunrawat/STM32CubeIDE/workspace_2/STM32_Modbus_TCP_Server/Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c:335:6:SystemCoreClockUpdate	10
+/Users/arunrawat/STM32CubeIDE/workspace_2/STM32_Modbus_TCP_Server/Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c:444:6:ExitRun0Mode	2
