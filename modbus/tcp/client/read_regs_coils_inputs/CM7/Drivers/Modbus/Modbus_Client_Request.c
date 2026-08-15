@@ -21,7 +21,7 @@ err_t MB_ReadHoldingRegisters(uint16_t txnID, uint8_t unitID, uint16_t addr, uin
     /* MBAP Header */
     // Transaction ID
     tx[0]=txnID>>8;
-    tx[1]=txnID++;
+    tx[1]=txnID;
 
     // Protocol ID
     tx[2]=0;
@@ -60,7 +60,7 @@ err_t MB_ReadInputRegisters(uint16_t txnID, uint8_t unitID, uint16_t addr, uint1
     /* MBAP Header */
     // Transaction ID
     tx[0]=txnID>>8;
-    tx[1]=txnID++;
+    tx[1]=txnID;
 
     // Protocol ID
     tx[2]=0;
@@ -100,7 +100,7 @@ err_t MB_ReadCoils(uint16_t txnID, uint8_t unitID, uint16_t addr, uint16_t qty)
 
     // Transaction ID
     tx[0] = txnID >> 8;
-    tx[1] = txnID++;
+    tx[1] = txnID;
 
     // Protocol ID
     tx[2] = 0;
@@ -141,7 +141,7 @@ err_t MB_ReadDiscreteInputs(uint16_t txnID, uint8_t unitID, uint16_t addr, uint1
 
     // Transaction ID
     tx[0] = txnID >> 8;
-    tx[1] = txnID++;
+    tx[1] = txnID;
 
     // Protocol ID
     tx[2] = 0;
